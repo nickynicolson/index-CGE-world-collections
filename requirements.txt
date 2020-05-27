@@ -1,0 +1,4 @@
+pandas
+unidecode
+pytesseract
+openpyxl
