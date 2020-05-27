@@ -23,3 +23,5 @@ System utility requirements include:
     - Stage 2 - using the exact matches made in stage 0 above, a search window is defined in the IPNI dataset (utilising the alphabetical ordering of the source data). Candidates in this search window are ranked by string similarity and the best match selected.
 
 A makefile handles dependencies between each step of the process, it can be initiated from a newly cloned repository with the command: `make matchnames`
+
+A further make command `make excel` packages up the results into an excel file with clickable links for manual verification checking.
