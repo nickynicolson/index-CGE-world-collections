@@ -1,11 +1,11 @@
-create-env:
-	python -m venv env
+SHELL := /bin/bash
+.ONESHELL:
 
-activate-env:
-	source env/Scripts/activate
-
-install-env:
-	pip install -r requirements.txt
+.PHONY: install
+install:
+	python -m venv env; \
+	source env/Scripts/activate; \
+    pip install -r requirements.txt; \
 
 # Convert multipage PDFs to single page files
 splitpages: output/pdfpages pdf2pages.py
@@ -14,7 +14,7 @@ output/pdfpages:
 	python pdf2pages.py pdfs output/pdfpages
 
 # Extract images from single page PDFs
-extractimages: output/pageimages
+extractimages: output/pdfpages
 output/pageimages: output/pdfpages pdfpage2image.py
 	mkdir -p output/pageimages
 	python pdfpage2image.py output/pdfpages output/pageimages
@@ -42,8 +42,10 @@ clean:
 	rm -rf output
 
 sterilise:
+	deactivate
 	rm -rf output
 	rm -rf data
+	rm -rf env
 
 # Download data from IPNI used for name matching
 ipnidata: data/ipniWebName.csv.xz

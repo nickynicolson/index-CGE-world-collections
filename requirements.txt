@@ -1,4 +1,6 @@
-pandas
-unidecode
-pytesseract
 openpyxl
+pandas
+PyPDF2
+pytesseract
+python-Levenshtein-wheels
+unidecode
